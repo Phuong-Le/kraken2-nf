@@ -12,8 +12,6 @@ workflow {
     taxo = file("${params.db}/taxo.k2d")
     if ( hash.exists() && opts.exists() && taxo.exists() ) {
         println "kraken database exists, proceed to classification"
-        // indices = Channel.fromPath('*.bt2')
-        //                     .collect()
         db_ch = Channel.fromPath("${params.db}/*.k2d")
                             .collect()
     } else {
