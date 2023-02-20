@@ -10,7 +10,7 @@ process classify [
     path "kraken_report.kraken"
 
     script:
-    db_name = db_file.getParent()
+    db_name = hash.getParent()
     """
     kraken2 --use-names --db ${db_name} \
     --paired \

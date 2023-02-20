@@ -15,10 +15,15 @@ workflow {
         // indices = Channel.fromPath('*.bt2')
         //                     .collect()
         db_ch = Channel.fromPath("${params.db}/*.k2d")
+                            .collect()
     } else {
-        db_ch = buildDB(hash)
+        db_ch = buildDB(hash).collect()
     }
 
     // classify based on built database
-    classify(db_ch)
+    def sample_params = file(params.sample_params)
+    sample_param_ch = Channel.of(sample_params.text)
+        .splitCsv( sep : '\t')
+        .map { row -> tuple( row[0], row[1], row[2] ) }
+    classify(db_ch, sample_param_ch)
 }
