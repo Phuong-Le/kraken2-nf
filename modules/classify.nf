@@ -1,4 +1,4 @@
-process classify [
+process classify {
     publishDir "${params.outdir}", mode: 'copy'
 
     input:
@@ -18,4 +18,4 @@ process classify [
     --output kraken_report.kraken \
     ${fq1} ${fq2}
     """
-]
+}
