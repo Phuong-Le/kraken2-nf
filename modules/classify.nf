@@ -6,16 +6,18 @@ process classify {
     tuple val(sample), path(fq1), path(fq2) 
 
     output:
-    path "kraken_report.kreport"
-    path "kraken_report.kraken"
+    path kreport
+    path out
 
     script:
     db_name = hash.getParent()
+    kreport = "${sample}_kraken_report.kreport"
+    out = "${sample}_kraken_report.kraken"
     """
     kraken2 --use-names --db ${db_name} \
     --paired \
-    --report kraken_report.kreport \
-    --output kraken_report.kraken \
+    --report ${kreport} \
+    --output ${out} \
     ${fq1} ${fq2}
     """
 }
