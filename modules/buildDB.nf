@@ -13,6 +13,6 @@ process buildDB {
     opts = 'opts.k2d'
     taxo = 'taxo.k2d'
     """
-    kraken2-build --standard --db ${db_name}
+    kraken2-build --build --db ${db_name}
     """
 }
