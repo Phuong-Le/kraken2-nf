@@ -2,7 +2,7 @@ process classify {
     publishDir "${params.outdir}", mode: 'copy'
 
     input:
-    tuple path(hash), path(opts), path(taxo)
+    tuple path(db_name), path(hash), path(opts), path(taxo)
     tuple val(sample), path(fq1), path(fq2) 
 
     output:
@@ -10,7 +10,7 @@ process classify {
     path out
 
     script:
-    db_name = hash.getParent()
+    // db_name = hash.getParent()
     kreport = "${sample}_kraken_report.kreport"
     out = "${sample}_kraken_report.kraken"
     """

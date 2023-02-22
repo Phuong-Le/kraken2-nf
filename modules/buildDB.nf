@@ -1,17 +1,19 @@
 process buildDB {
-    publishDir "${params.db_dir}", mode: 'copy'
+    publishDir "${params.db}", mode: 'copy'
 
     input:
-    path db_file
+    // path db_file
+    path db_name
 
     output:
-    tuple path(hash), path(opts), path(taxo)
+    tuple path(db_name), path(hash), path(opts), path(taxo)
 
     script:
-    db_name = db_file.getParent()
-    hash = 'hash.k2d'
-    opts = 'opts.k2d'
-    taxo = 'taxo.k2d'
+    // db_name = db_file.getParent()
+
+    hash = "${db_name}/hash.k2d"
+    opts = "${db_name}/opts.k2d"
+    taxo = "${db_name}/taxo.k2d"
     """
     kraken2-build --build --db ${db_name}
     """

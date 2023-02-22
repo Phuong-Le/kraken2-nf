@@ -2,7 +2,7 @@
 
 nextflow.enable.dsl=2
 
-include { buildDB } from './modules/buildDN.nf'
+include { buildDB } from './modules/buildDB.nf'
 include { classify } from './modules/classify.nf'
 
 workflow {
@@ -12,10 +12,13 @@ workflow {
     taxo = file("${params.db}/taxo.k2d")
     if ( hash.exists() && opts.exists() && taxo.exists() ) {
         println "kraken database exists, proceed to classification"
-        db_ch = Channel.fromPath("${params.db}/*.k2d")
-                            .collect()
+        db_ch = [params.db, hash, opts, taxo]
+        // db_ch = Channel.fromPath("${params.db}/*.k2d")
+                            // .collect()
     } else {
-        db_ch = buildDB(hash).collect()
+        println "building kraken database"
+        // db_ch = buildDB(hash).collect()
+        db_ch = buildDB(params.db).collect()
     }
 
     // classify based on built database
