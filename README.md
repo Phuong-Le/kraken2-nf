@@ -1,4 +1,4 @@
-## bowtie2-nf 
+## kraken2-nf 
 a Nextflow pipeline for running [kraken2](https://github.com/DerrickWood/kraken2) classification of metagenomes - from building kraken2-database to classification.
 
 ## How the pipeline works in details
