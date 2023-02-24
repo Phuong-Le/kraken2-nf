@@ -53,7 +53,7 @@ demo file for `${sample_params}` is found in [demo_files](https://github.com/Phu
 ## Scope for the future
 The pipeline hasn't fully addressed building kraken2 database - users still need to manually include references and download their taxonomy. Future development could try to design the best way to automate this process. In the meantime, following [kraken2 manual](https://github.com/DerrickWood/kraken2/wiki/Manual#custom-databases), users can either download the standard databse
 ```
-kraken2-build --download-library standard_reference --db $DBNAME 
+kraken2-build --download-library ${standard_reference} --db $DBNAME 
 ```
 `${standard_reference}` is one of the following: archaea, bacteria, plasmid, viral, human, fungi, plant, protozoa, nr, nt, UniVec, UniVec_Core, env_nr, env_nt
 
