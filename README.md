@@ -12,6 +12,8 @@ The main workflow can be found in [main.nf](https://github.com/Phuong-Le/bowtie2
 ## Dependencies
 - [Nextflow](https://www.nextflow.io/)
 - [Docker](https://www.docker.com/) if using own machine or [Singularity](https://sylabs.io/singularity/) if using a shared HPC
+
+if run without a container (e.g. when `-c lsf.config` is not activated)
 - [`kraken2`](https://github.com/DerrickWood/kraken2)
 
 
