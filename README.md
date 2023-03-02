@@ -38,6 +38,9 @@ nextflow run ${nf_script} -c ${config_file} \
 
 example on an lsf system like at Sanger
 ```
+module load ISG/singularity/3.10.0
+module load nextflow/22.10.3-5834
+
 bsub -cwd /path/to/working_dir -o %J.out -e %J.err -R "select[mem>1000] rusage[mem=1000]" -M1000 \
     "nextflow run ${nf_script} -c ${config_file} \
     --db ${db} --sample_params ${sample_params} --outdir ${outdir}"
