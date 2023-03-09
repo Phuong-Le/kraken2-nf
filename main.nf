@@ -13,15 +13,11 @@ workflow {
     if ( hash.exists() && opts.exists() && taxo.exists() ) {
         println "kraken database exists, proceed to classification"
         db_ch = [params.db, hash, opts, taxo]
-        // db_ch = Channel.fromPath("${params.db}/*.k2d")
-                            // .collect()
     } else {
         println "building kraken database"
-        // db_ch = buildDB(hash).collect()
         db_ch = buildDB(params.db).collect()
     }
 
-    // classify based on built database
     def sample_params = file(params.sample_params)
     sample_param_ch = Channel.of(sample_params.text)
         .splitCsv( sep : '\t')

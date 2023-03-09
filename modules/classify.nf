@@ -10,7 +10,6 @@ process classify {
     path out
 
     script:
-    // db_name = hash.getParent()
     kreport = "${sample}_kraken_report.kreport"
     out = "${sample}_kraken_report.kraken"
     """
