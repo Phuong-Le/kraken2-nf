@@ -1,5 +1,4 @@
 process buildDB {
-    publishDir "${params.db}", mode: 'copy'
 
     input:
     // path db_file
